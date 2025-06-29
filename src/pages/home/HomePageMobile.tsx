@@ -1,8 +1,13 @@
-import type { BitcoinPriceData, GuessResult } from '../../../../shared/models';
+import type { BitcoinPriceData, GuessResult } from '@shared/models';
 import { Box, Typography, useTheme } from '@mui/material';
-import { PriceDisplay, PredictionControls, PredictionDisplay, ResultDisplay } from '../../game';
-import type { OnGuessFn } from '../../../App';
-import { WidgetContainer } from '../../common';
+import {
+  PriceDisplay,
+  PredictionControls,
+  PredictionDisplay,
+  ResultDisplay,
+} from '@app/components/game';
+import type { OnGuessFn } from '@app/App';
+import { WidgetContainer } from '@app/components/common';
 
 type HomeScreenProps = {
   price: BitcoinPriceData | null;
@@ -12,7 +17,7 @@ type HomeScreenProps = {
   guessResult: GuessResult | null;
 };
 
-export const HomeScreen: React.FC<HomeScreenProps> = (props: HomeScreenProps) => {
+export const HomePageMobile: React.FC<HomeScreenProps> = (props: HomeScreenProps) => {
   const { price, onGuess, disabled, userGuess, guessResult } = props;
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';

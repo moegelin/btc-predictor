@@ -101,8 +101,14 @@ export const PriceHistoryChart: React.FC<PriceHistoryChartProps> = React.memo(({
             dataKey="price"
             stroke={theme.palette.primary.main}
             strokeWidth={2}
-            dot={(props) => <CustomDot {...props} />}
-            activeDot={(props) => <CustomDot {...props} isActive />}
+            dot={(props) => {
+              const { key, ...rest } = props;
+              return <CustomDot key={key} {...rest} />;
+            }}
+            activeDot={(props) => {
+              const { key, ...rest } = props;
+              return <CustomDot key={key} {...rest} isActive />;
+            }}
           />
           {/* Add reference lines for predictions */}
           {chartData

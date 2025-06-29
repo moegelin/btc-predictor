@@ -1,18 +1,13 @@
 import React from 'react';
-import { Alert, Box, Paper, Tab, Tabs, useTheme } from '@mui/material';
-import {
-  type PredictionHistoryItem,
-  PredictionControls,
-  PredictionDisplay,
-  PriceDisplay,
-  ResultDisplay,
-} from '../game';
+import { Alert, Box, Tab, Tabs } from '@mui/material';
+import { type PredictionHistoryItem } from '../game';
 import { Header } from './Header';
 import { type PriceHistoryPoint } from '@features/price-history';
-import type { BitcoinPriceData } from '../../../shared/models';
-import { HistoryPage } from '@pages/HistoryPage';
+import type { BitcoinPriceData, GuessResult } from '@shared/models';
+import { HistoryPage } from '@pages/history/HistoryPage';
 import { type ScreenType, useNavigationStore } from '../../stores';
-import { SettingsPage } from '@pages/SettingsPage';
+import { SettingsPage } from '@pages/settings/SettingsPage';
+import { HomePage } from '@pages/home/HomePage';
 
 type AppDesktopLayoutProps = {
   score: number;
@@ -20,7 +15,7 @@ type AppDesktopLayoutProps = {
   timeToNextUpdate: number;
   progressValue: number;
   userGuess: boolean | null;
-  guessResult: { correct: boolean; priceChange: number } | null;
+  guessResult: GuessResult | null;
   onGuess: (type: 'up' | 'down') => void;
   loading?: boolean;
   error: string | null;
@@ -42,8 +37,6 @@ export const AppDesktopLayout: React.FC<AppDesktopLayoutProps> = ({
   predictionHistory,
   priceHistory,
 }) => {
-  const theme = useTheme();
-  const isDarkMode = theme.palette.mode === 'dark';
   const currentScreen = useNavigationStore((state) => state.currentScreen);
   const setCurrentScreen = useNavigationStore((state) => state.setCurrentScreen);
 
@@ -70,61 +63,13 @@ export const AppDesktopLayout: React.FC<AppDesktopLayoutProps> = ({
 
       {/* Home Tab */}
       {currentScreen === 'home' && (
-        <Paper
-          elevation={isDarkMode ? 4 : 1}
-          sx={{
-            p: 4,
-            borderRadius: 2,
-            backgroundColor: 'background.paper',
-            border: theme.customColors.cardBorder,
-            overflow: 'visible',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          {/* Removed countdown indicator as it's now in the header */}
-
-          {price && (
-            <PriceDisplay
-              price={price.currentPrice}
-              lastUpdated={price.lastUpdated}
-              previousPrice={price.previousPrice}
-            />
-          )}
-
-          <PredictionControls onGuess={onGuess} disabled={loading} />
-
-          {userGuess !== null && <PredictionDisplay guessType={userGuess ? 'up' : 'down'} />}
-
-          {guessResult && !userGuess && (
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flex: 1,
-                py: 2,
-                backgroundColor: isDarkMode ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.03)',
-                borderRadius: 1.5,
-              }}
-            >
-              <ResultDisplay
-                result={{
-                  correct: guessResult.correct,
-                  priceChange: guessResult.priceChange,
-                  resolvedAt: Date.now(),
-                }}
-              />
-            </Box>
-          )}
-
-          {error && (
-            <Alert severity="error" sx={{ mt: 2 }}>
-              {error}
-            </Alert>
-          )}
-        </Paper>
+        <HomePage
+          price={price}
+          onGuess={onGuess}
+          disabled={loading}
+          userGuess={userGuess}
+          guessResult={guessResult}
+        />
       )}
 
       {/* History Tab */}

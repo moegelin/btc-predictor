@@ -9,9 +9,9 @@ import type { PriceHistoryPoint } from '@features/price-history';
 import type { BitcoinPriceData, GuessResult } from '../../../shared/models';
 import type { OnGuessFn } from '../../App';
 import { useNavigationStore, type ScreenType } from '../../stores';
-import { HomeScreen } from './screens/HomeScreen';
-import { HistoryPage } from '@pages/HistoryPage';
-import { SettingsPage } from '@pages/SettingsPage';
+import { HistoryPage } from '@pages/history/HistoryPage';
+import { SettingsPage } from '@pages/settings/SettingsPage';
+import { HomePage } from '@pages/home/HomePage';
 
 type AppMobileLayoutProps = {
   score: number;
@@ -51,7 +51,7 @@ export const AppMobileLayout: React.FC<AppMobileLayoutProps> = ({
       <Header score={score} timeToNextUpdate={timeToNextUpdate} progressValue={progressValue} />
 
       {currentScreen === 'home' && (
-        <HomeScreen
+        <HomePage
           price={price}
           onGuess={onGuess}
           disabled={loading}
