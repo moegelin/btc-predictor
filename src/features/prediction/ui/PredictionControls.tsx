@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Box, Typography, useTheme } from '@mui/material';
+import { Button, Box, Typography, useTheme, useMediaQuery } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { styled } from '@mui/material/styles';
-import { WidgetContainer } from '../common';
+import { WidgetContainer } from '@app/components/common';
 
 const ControlsContainer = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'compact',
@@ -37,20 +37,19 @@ const PredictionButton = styled(Button, {
 type PredictionControlsProps = {
   onGuess: (type: 'up' | 'down') => void;
   disabled: boolean;
-  compact?: boolean;
 };
 
-export const PredictionControls: React.FC<PredictionControlsProps> = ({
-  onGuess,
-  disabled,
-  compact = false,
-}) => {
+/**
+ * Up and Down buttons for making price predictions.
+ */
+export const PredictionControls: React.FC<PredictionControlsProps> = ({ onGuess, disabled }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isDarkMode = theme.palette.mode === 'dark';
 
   return (
     <Box sx={{ width: '100%' }}>
-      {!compact && (
+      {!isMobile && (
         <WidgetContainer>
           <Typography variant="subtitle1" align="center" color="text.secondary" sx={{ mb: 2 }}>
             PREDICT NEXT PRICE
@@ -94,8 +93,8 @@ export const PredictionControls: React.FC<PredictionControlsProps> = ({
         </WidgetContainer>
       )}
 
-      {compact && (
-        <ControlsContainer compact={compact}>
+      {isMobile && (
+        <ControlsContainer compact={isMobile}>
           <PredictionButton
             variant={isDarkMode ? 'contained' : 'contained'}
             color="success"
@@ -104,7 +103,7 @@ export const PredictionControls: React.FC<PredictionControlsProps> = ({
             disabled={disabled}
             aria-label="Guess price will go up"
             startIcon={<ArrowUpwardIcon fontSize="small" />}
-            compact={compact}
+            compact={isMobile}
             sx={{
               background: isDarkMode ? 'linear-gradient(to bottom, #28a745, #218838)' : undefined,
               borderRadius: '20px',
@@ -127,7 +126,7 @@ export const PredictionControls: React.FC<PredictionControlsProps> = ({
             disabled={disabled}
             aria-label="Guess price will go down"
             startIcon={<ArrowDownwardIcon fontSize="small" />}
-            compact={compact}
+            compact={isMobile}
             sx={{
               background: isDarkMode ? 'linear-gradient(to bottom, #dc3545, #c82333)' : undefined,
               borderRadius: '20px',

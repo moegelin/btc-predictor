@@ -1,14 +1,14 @@
 import { Box, Paper, useTheme } from '@mui/material';
+import { PriceDisplay } from '@app/components/game';
+import type { HomeScreenProps } from './HomePage';
 import {
   PredictionControls,
   PredictionDisplay,
-  PriceDisplay,
-  ResultDisplay,
-} from '@app/components/game';
-import type { HomeScreenProps } from './HomePage';
+  PredictionResultDisplay,
+} from '@features/prediction';
 
 export const HomePageDesktop: React.FC<HomeScreenProps> = (props: HomeScreenProps) => {
-  const { price, onGuess, disabled, userGuess, guessResult } = props;
+  const { price, onGuess, disabled, userGuess, predictionResult } = props;
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
 
@@ -39,7 +39,7 @@ export const HomePageDesktop: React.FC<HomeScreenProps> = (props: HomeScreenProp
 
       {userGuess !== null && <PredictionDisplay guessType={userGuess ? 'up' : 'down'} />}
 
-      {guessResult && !userGuess && (
+      {predictionResult && !userGuess && (
         <Box
           sx={{
             display: 'flex',
@@ -52,10 +52,10 @@ export const HomePageDesktop: React.FC<HomeScreenProps> = (props: HomeScreenProp
             borderRadius: 1.5,
           }}
         >
-          <ResultDisplay
+          <PredictionResultDisplay
             result={{
-              correct: guessResult.correct,
-              priceChange: guessResult.priceChange,
+              correct: predictionResult.correct,
+              priceChange: predictionResult.priceChange,
               resolvedAt: Date.now(),
             }}
           />

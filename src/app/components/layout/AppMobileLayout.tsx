@@ -4,14 +4,14 @@ import HomeIcon from '@mui/icons-material/Home';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Header } from './Header';
-import type { PredictionHistoryItem } from '../game';
 import type { PriceHistoryPoint } from '@features/price-history';
-import type { BitcoinPriceData, GuessResult } from '../../../shared/models';
+import type { BitcoinPriceData } from '@shared/models';
 import type { OnGuessFn } from '../../App';
 import { useNavigationStore, type ScreenType } from '../../stores';
 import { HistoryPage } from '@pages/history/HistoryPage';
 import { SettingsPage } from '@pages/settings/SettingsPage';
 import { HomePage } from '@pages/home/HomePage';
+import type { PredictionHistoryItem, PredictionResult } from '@features/prediction';
 
 type AppMobileLayoutProps = {
   score: number;
@@ -19,7 +19,7 @@ type AppMobileLayoutProps = {
   timeToNextUpdate: number;
   progressValue: number;
   userGuess: boolean | null;
-  guessResult: GuessResult | null;
+  predictionResult: PredictionResult | null;
   onGuess: OnGuessFn;
   loading?: boolean;
   error: string | null;
@@ -34,7 +34,7 @@ export const AppMobileLayout: React.FC<AppMobileLayoutProps> = ({
   timeToNextUpdate,
   progressValue,
   userGuess,
-  guessResult,
+  predictionResult,
   onGuess,
   loading = false,
   error,
@@ -56,7 +56,7 @@ export const AppMobileLayout: React.FC<AppMobileLayoutProps> = ({
           onGuess={onGuess}
           disabled={loading}
           userGuess={userGuess}
-          guessResult={guessResult}
+          predictionResult={predictionResult}
         />
       )}
 

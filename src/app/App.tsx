@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Box, CircularProgress, Container, useMediaQuery, useTheme } from '@mui/material';
 import { AppMobileLayout, AppDesktopLayout } from './components/layout';
-import type { PredictionHistoryItem } from './components/game';
-import type { BitcoinPriceData, GuessResult } from '../shared/models';
+import type { BitcoinPriceData } from '@shared/models';
 import { useBitcoinPriceWithCountdown } from './use-bitcoin';
 import type { PriceHistoryPoint } from '@features/price-history';
 import { useSettingsStore } from '@features/settings';
+import type { PredictionHistoryItem, PredictionResult } from '@features/prediction';
 
 export type UserGuess = 'up' | 'down' | null; // TODO replace boolean
 export type OnGuessFn = (type: 'up' | 'down') => void;
@@ -18,7 +18,7 @@ export const App: React.FC = () => {
   const [loading, _setLoading] = useState<boolean>(false);
   const [error, _setError] = useState<string | null>(null);
   const [userGuess, setUserGuess] = useState<boolean | null>(null);
-  const [guessResult, setGuessResult] = useState<GuessResult | null>(null);
+  const [predictionResult, setPredictionResult] = useState<PredictionResult | null>(null);
   const [predictionHistory, setPredictionHistory] = useState<PredictionHistoryItem[]>([]);
   const [priceHistory, setPriceHistory] = useState<PriceHistoryPoint[]>([]);
   const theme = useTheme();
@@ -29,7 +29,6 @@ export const App: React.FC = () => {
       // Always add the new price to the price history
       const timestamp = Date.now();
       setPriceHistory((prevHistory) => {
-        // Keep only the last 20 price points
         return [
           ...prevHistory,
           {
@@ -38,7 +37,7 @@ export const App: React.FC = () => {
             prediction:
               userGuess !== null ? (userGuess ? ('up' as const) : ('down' as const)) : undefined,
           },
-        ].slice(-20);
+        ].slice(-20); // Keep only the last 20 price points
       });
 
       // If there's no user guess, nothing to check
@@ -53,13 +52,13 @@ export const App: React.FC = () => {
       setScore((prevScore: number) => prevScore + (correctGuess ? 1 : -1));
       const priceChangeValue = priceData.currentPrice - priceData.previousPrice;
 
-      setGuessResult({
+      setPredictionResult({
         correct: correctGuess,
         priceChange: priceChangeValue,
         resolvedAt: Date.now(),
       });
 
-      // Add to game history (add new items at the beginning so newest are on the right)
+      // Add result to prediction history
       const newPredictionHistory = {
         id: timestamp,
         timestamp,
@@ -68,7 +67,7 @@ export const App: React.FC = () => {
         priceChange: priceChangeValue,
       };
 
-      setPredictionHistory((prevHistory) => [newPredictionHistory, ...prevHistory].slice(0, 10)); // Keep only the last 10 items
+      setPredictionHistory((prevHistory) => [...prevHistory, newPredictionHistory].slice(0, 10)); // Keep only the last 10 items
 
       // Update the price history with the result
       setPriceHistory((prevHistory) => {
@@ -126,7 +125,7 @@ export const App: React.FC = () => {
     setUserGuess(type === 'up');
 
     // Reset guess result when making a new guess
-    setGuessResult(null);
+    setPredictionResult(null);
   }, []);
 
   // Show loading spinner while initial data is being fetched
@@ -164,7 +163,7 @@ export const App: React.FC = () => {
               timeToNextUpdate={timeToNextUpdate}
               progressValue={progressValue}
               userGuess={userGuess}
-              guessResult={guessResult}
+              predictionResult={predictionResult}
               onGuess={handleGuess}
               loading={loading}
               error={error}
@@ -179,7 +178,7 @@ export const App: React.FC = () => {
             timeToNextUpdate={timeToNextUpdate}
             progressValue={progressValue}
             userGuess={userGuess}
-            guessResult={guessResult}
+            predictionResult={predictionResult}
             onGuess={handleGuess}
             loading={loading}
             error={error}

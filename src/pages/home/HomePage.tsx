@@ -1,15 +1,16 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import { HomePageMobile } from './HomePageMobile';
 import { HomePageDesktop } from './HomePageDesktop';
-import type { BitcoinPriceData, GuessResult } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models';
 import type { OnGuessFn } from '@app/App';
+import type { PredictionResult } from '@features/prediction';
 
 export type HomeScreenProps = {
   price: BitcoinPriceData | null;
   onGuess: OnGuessFn;
   disabled: boolean;
   userGuess: boolean | null;
-  guessResult: GuessResult | null;
+  predictionResult: PredictionResult | null;
 };
 
 export const HomePage: React.FC<HomeScreenProps> = (props) => {

@@ -4,14 +4,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-
-export type PredictionHistoryItem = {
-  id: number;
-  timestamp: number;
-  prediction: 'up' | 'down';
-  correct: boolean;
-  priceChange: number;
-};
+import type { PredictionHistoryItem } from '../models/types';
 
 type PredictionHistoryProps = {
   history: PredictionHistoryItem[];
@@ -31,6 +24,9 @@ const formatDate = (timestamp: number) => {
   return new Date(timestamp).toLocaleTimeString();
 };
 
+/**
+ * Displays the user's prediction history with details on each prediction.
+ */
 export const PredictionHistory: React.FC<PredictionHistoryProps> = ({ history }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

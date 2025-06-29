@@ -1,24 +1,25 @@
-import type { BitcoinPriceData, GuessResult } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models';
 import { Box, Typography, useTheme } from '@mui/material';
-import {
-  PriceDisplay,
-  PredictionControls,
-  PredictionDisplay,
-  ResultDisplay,
-} from '@app/components/game';
+import { PriceDisplay } from '@app/components/game';
 import type { OnGuessFn } from '@app/App';
 import { WidgetContainer } from '@app/components/common';
+import {
+  PredictionControls,
+  PredictionDisplay,
+  type PredictionResult,
+  PredictionResultDisplay,
+} from '@features/prediction';
 
 type HomeScreenProps = {
   price: BitcoinPriceData | null;
   onGuess: OnGuessFn;
   disabled: boolean;
   userGuess: boolean | null;
-  guessResult: GuessResult | null;
+  predictionResult: PredictionResult | null;
 };
 
 export const HomePageMobile: React.FC<HomeScreenProps> = (props: HomeScreenProps) => {
-  const { price, onGuess, disabled, userGuess, guessResult } = props;
+  const { price, onGuess, disabled, userGuess, predictionResult } = props;
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
 
@@ -60,7 +61,7 @@ export const HomePageMobile: React.FC<HomeScreenProps> = (props: HomeScreenProps
             >
               PREDICT NEXT PRICE
             </Typography>
-            <PredictionControls onGuess={onGuess} disabled={disabled} compact={true} />
+            <PredictionControls onGuess={onGuess} disabled={disabled} />
           </Box>
         </WidgetContainer>
       )}
@@ -99,12 +100,12 @@ export const HomePageMobile: React.FC<HomeScreenProps> = (props: HomeScreenProps
             {/* Prediction Status */}
             {userGuess !== null ? (
               <PredictionDisplay guessType={userGuess ? 'up' : 'down'} />
-            ) : guessResult ? (
-              <ResultDisplay
+            ) : predictionResult ? (
+              <PredictionResultDisplay
                 result={{
-                  correct: guessResult.correct,
-                  priceChange: guessResult.priceChange,
-                  resolvedAt: guessResult.resolvedAt,
+                  correct: predictionResult.correct,
+                  priceChange: predictionResult.priceChange,
+                  resolvedAt: predictionResult.resolvedAt,
                 }}
               />
             ) : (

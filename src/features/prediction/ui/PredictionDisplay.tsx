@@ -2,12 +2,15 @@ import React from 'react';
 import { Box, Chip, Paper, Typography, useMediaQuery, useTheme } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import './styles/guess-status.css';
+import '@app/components/game/styles/guess-status.css';
 
 type PredictionDisplayProps = {
   guessType: 'up' | 'down';
 };
 
+/**
+ * Displays the user's prediction for the next price movement.
+ */
 export const PredictionDisplay: React.FC<PredictionDisplayProps> = ({ guessType }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

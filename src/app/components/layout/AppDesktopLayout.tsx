@@ -1,13 +1,13 @@
 import React from 'react';
 import { Alert, Box, Tab, Tabs } from '@mui/material';
-import { type PredictionHistoryItem } from '../game';
 import { Header } from './Header';
 import { type PriceHistoryPoint } from '@features/price-history';
-import type { BitcoinPriceData, GuessResult } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models';
 import { HistoryPage } from '@pages/history/HistoryPage';
 import { type ScreenType, useNavigationStore } from '../../stores';
 import { SettingsPage } from '@pages/settings/SettingsPage';
 import { HomePage } from '@pages/home/HomePage';
+import type { PredictionHistoryItem, PredictionResult } from '@features/prediction';
 
 type AppDesktopLayoutProps = {
   score: number;
@@ -15,7 +15,7 @@ type AppDesktopLayoutProps = {
   timeToNextUpdate: number;
   progressValue: number;
   userGuess: boolean | null;
-  guessResult: GuessResult | null;
+  predictionResult: PredictionResult | null;
   onGuess: (type: 'up' | 'down') => void;
   loading?: boolean;
   error: string | null;
@@ -30,7 +30,7 @@ export const AppDesktopLayout: React.FC<AppDesktopLayoutProps> = ({
   timeToNextUpdate,
   progressValue,
   userGuess,
-  guessResult,
+  predictionResult,
   onGuess,
   loading = false,
   error,
@@ -68,7 +68,7 @@ export const AppDesktopLayout: React.FC<AppDesktopLayoutProps> = ({
           onGuess={onGuess}
           disabled={loading}
           userGuess={userGuess}
-          guessResult={guessResult}
+          predictionResult={predictionResult}
         />
       )}
 

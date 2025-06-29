@@ -2,13 +2,16 @@ import React from 'react';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import type { GuessResult } from '../../../shared/models';
+import type { PredictionResult } from '../models/types';
 
-type ResultDisplayProps = {
-  result: GuessResult;
+type PredictionResultDisplayProps = {
+  result: PredictionResult;
 };
 
-export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result }) => {
+/**
+ * Shows the result of a user's prediction after the price has changed.
+ */
+export const PredictionResultDisplay: React.FC<PredictionResultDisplayProps> = ({ result }) => {
   const { correct, priceChange } = result;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import { PredictionHistory, type PredictionHistoryItem } from '@app/components/game';
 import { WidgetContainer } from '@app/components/common';
 import { PriceHistoryChart, type PriceHistoryPoint } from '@features/price-history';
+import { PredictionHistory, type PredictionHistoryItem } from '@features/prediction';
 
 type HistoryScreenProps = {
   priceHistory: PriceHistoryPoint[];
