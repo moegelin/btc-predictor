@@ -6,6 +6,7 @@ import tseslint from 'typescript-eslint';
 import { globalIgnores } from 'eslint/config';
 import prettier from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import pluginImport from 'eslint-plugin-import';
 
 export default tseslint.config([
   globalIgnores(['dist']),
@@ -24,8 +25,25 @@ export default tseslint.config([
     },
     plugins: {
       prettier: prettier,
+      import: pluginImport,
+    },
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        },
+      },
     },
     rules: {
+      'import/extensions': [
+        'error',
+        'ignorePackages',
+        {
+          ts: 'never',
+          tsx: 'never',
+          js: 'never',
+        },
+      ],
       'prettier/prettier': 'error',
       '@typescript-eslint/no-unused-vars': [
         'warn',
