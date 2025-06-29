@@ -18,6 +18,26 @@ Bitcoin Predictor is a React-based web application that simulates Bitcoin price 
 - **Theme Support**: Light and dark themes for better user experience
 - **Customizable Settings**: Configure refresh intervals and other application settings
 
+## Usage Instructions
+
+1. **Making Predictions**:
+   - On the home screen, you'll see the current Bitcoin price
+   - Use the "UP" or "DOWN" buttons to predict the next price movement
+   - Wait for the next price update to see if your prediction was correct
+
+
+2. **Viewing History**:
+   - Navigate to the History tab to see your prediction history and price chart
+   - The chart shows price movements over time with your predictions marked
+
+
+3. **Adjusting Settings**:
+   - Go to the Settings tab to customize the application
+   - Adjust the refresh timer to change how frequently the price updates
+   - Use keyboard shortcuts (P to pause/resume, M to manually refresh when paused)
+
+
+
 ## Getting Started
 
 ### Prerequisites
@@ -29,7 +49,7 @@ Bitcoin Predictor is a React-based web application that simulates Bitcoin price 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/btc-predictor.git
+   git clone https://github.com/moegelin/btc-predictor.git
    cd btc-predictor
    ```
 
@@ -49,25 +69,7 @@ npm run dev
 
 This will start the application in development mode. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-## Usage
-
-1. **Making Predictions**:
-   - On the home screen, you'll see the current Bitcoin price
-   - Use the "UP" or "DOWN" buttons to predict the next price movement
-   - Wait for the next price update to see if your prediction was correct
-
-
-2. **Viewing History**:
-   - Navigate to the History tab to see your prediction history and price chart
-   - The chart shows price movements over time with your predictions marked
-
-
-3. **Adjusting Settings**:
-   - Go to the Settings tab to customize the application
-   - Adjust the refresh timer to change how frequently the price updates
-   - Use keyboard shortcuts (P to pause/resume, M to manually refresh when paused)
-
-## Building for Production
+### Building for Production
 
 To build the application for production:
 
