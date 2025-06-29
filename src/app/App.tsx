@@ -5,7 +5,7 @@ import type { PredictionHistoryItem } from './components/game';
 import type { BitcoinPriceData, GuessResult } from '../shared/models';
 import { useBitcoinPriceWithCountdown } from './use-bitcoin';
 import type { PriceHistoryPoint } from './components/chart';
-import { useSettingsStore } from './stores';
+import { useSettingsStore } from '@features/settings';
 
 export type UserGuess = 'up' | 'down' | null; // TODO replace boolean
 export type OnGuessFn = (type: 'up' | 'down') => void;

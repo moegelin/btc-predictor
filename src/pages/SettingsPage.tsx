@@ -1,8 +1,8 @@
 import React from 'react';
-import { SettingsContent } from '../../settings';
-import { WidgetContainer } from '../../common';
+import { WidgetContainer } from '@app/components/common';
+import { SettingsContent } from '@features/settings';
 
-export const SettingsScreen: React.FC = () => {
+export const SettingsPage: React.FC = () => {
   return (
     <WidgetContainer sx={{ backgroundColor: 'background.paper', mb: 0 }}>
       <SettingsContent />

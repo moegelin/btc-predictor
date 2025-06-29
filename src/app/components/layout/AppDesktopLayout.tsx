@@ -11,8 +11,8 @@ import { Header } from './Header';
 import { type PriceHistoryPoint } from '../chart';
 import type { BitcoinPriceData } from '../../../shared/models';
 import { HistoryScreen } from './screens/HistoryScreen';
-import { SettingsScreen } from './screens/SettingsScreen';
 import { type ScreenType, useNavigationStore } from '../../stores';
+import { SettingsPage } from '@pages/SettingsPage';
 
 type AppDesktopLayoutProps = {
   score: number;
@@ -133,7 +133,7 @@ export const AppDesktopLayout: React.FC<AppDesktopLayoutProps> = ({
       )}
 
       {/* Settings Tab */}
-      {currentScreen === 'settings' && <SettingsScreen />}
+      {currentScreen === 'settings' && <SettingsPage />}
 
       {error && (
         <Alert severity="error" sx={{ mt: 2 }}>

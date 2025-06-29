@@ -19,7 +19,7 @@ import PauseIcon from '@mui/icons-material/Pause';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import type { SelectChangeEvent } from '@mui/material';
-import { useSettingsStore } from '../../stores';
+import { useSettingsStore } from '../store/settings-store';
 
 export const SettingsContent: React.FC = () => {
   const refreshTimerSeconds = useSettingsStore((state) => state.refreshTimerSeconds);

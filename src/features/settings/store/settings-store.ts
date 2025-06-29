@@ -1,30 +1,27 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
+import type { SettingsState } from '../model/types';
+import { DEFAULT_REFRESH_TIMER } from '../model/defaults';
 
-type SettingsState = {
-  refreshTimerSeconds: number;
-  setRefreshTimerSeconds: (seconds: number) => void;
-  isPriceRefreshPaused: boolean;
-  togglePriceRefreshPause: () => void;
-};
+const storageKey = 'btc-predictor-settings';
 
 export const useSettingsStore = create<SettingsState>()(
   persist(
     immer<SettingsState>((set) => ({
-      refreshTimerSeconds: 10, // Default value
+      refreshTimerSeconds: DEFAULT_REFRESH_TIMER,
       setRefreshTimerSeconds: (seconds) =>
         set((state) => {
           state.refreshTimerSeconds = seconds;
         }),
-      isPriceRefreshPaused: false, // Default value
+      isPriceRefreshPaused: false,
       togglePriceRefreshPause: () =>
         set((state) => {
           state.isPriceRefreshPaused = !state.isPriceRefreshPaused;
         }),
     })),
     {
-      name: 'btc-predictor-settings', // Storage key
+      name: storageKey,
     }
   )
 );

@@ -11,7 +11,7 @@ import type { OnGuessFn } from '../../App';
 import { useNavigationStore, type ScreenType } from '../../stores';
 import { HomeScreen } from './screens/HomeScreen';
 import { HistoryScreen } from './screens/HistoryScreen';
-import { SettingsScreen } from './screens/SettingsScreen';
+import { SettingsPage } from '@pages/SettingsPage';
 
 type AppMobileLayoutProps = {
   score: number;
@@ -64,7 +64,7 @@ export const AppMobileLayout: React.FC<AppMobileLayoutProps> = ({
         <HistoryScreen priceHistory={priceHistory} predictionHistory={predictionHistory} />
       )}
 
-      {currentScreen === 'settings' && <SettingsScreen />}
+      {currentScreen === 'settings' && <SettingsPage />}
 
       {error && (
         <Alert severity="error" sx={{ mt: 2 }}>
