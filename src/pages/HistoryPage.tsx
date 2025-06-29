@@ -1,18 +1,15 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import { PredictionHistory, type PredictionHistoryItem } from '../../game';
-import { PriceHistoryChart, type PriceHistoryPoint } from '../../chart';
-import { WidgetContainer } from '../../common';
+import { PredictionHistory, type PredictionHistoryItem } from '@app/components/game';
+import { WidgetContainer } from '@app/components/common';
+import { PriceHistoryChart, type PriceHistoryPoint } from '@features/price-history';
 
 type HistoryScreenProps = {
   priceHistory: PriceHistoryPoint[];
   predictionHistory: PredictionHistoryItem[];
 };
 
-export const HistoryScreen: React.FC<HistoryScreenProps> = ({
-  priceHistory,
-  predictionHistory,
-}) => {
+export const HistoryPage: React.FC<HistoryScreenProps> = ({ priceHistory, predictionHistory }) => {
   return (
     <>
       <WidgetContainer sx={{ backgroundColor: 'background.paper' }}>

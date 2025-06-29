@@ -1,5 +1,5 @@
 import React from 'react';
-import type { PriceHistoryPoint } from './PriceHistoryChart';
+import type { PriceHistoryPoint } from '../models/types';
 
 type CustomDotProps = {
   cx?: number;
@@ -11,6 +11,9 @@ type CustomDotProps = {
   };
 };
 
+/**
+ * Colored dot for the price history chart
+ */
 export const CustomDot: React.FC<CustomDotProps> = (props) => {
   const { cx, cy, payload, isActive } = props;
   const color = payload.result !== undefined ? (payload.result ? '#4caf50' : '#ff0000') : '#b0bec5';

@@ -5,12 +5,12 @@ import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Header } from './Header';
 import type { PredictionHistoryItem } from '../game';
-import type { PriceHistoryPoint } from '../chart';
+import type { PriceHistoryPoint } from '@features/price-history';
 import type { BitcoinPriceData, GuessResult } from '../../../shared/models';
 import type { OnGuessFn } from '../../App';
 import { useNavigationStore, type ScreenType } from '../../stores';
 import { HomeScreen } from './screens/HomeScreen';
-import { HistoryScreen } from './screens/HistoryScreen';
+import { HistoryPage } from '@pages/HistoryPage';
 import { SettingsPage } from '@pages/SettingsPage';
 
 type AppMobileLayoutProps = {
@@ -61,7 +61,7 @@ export const AppMobileLayout: React.FC<AppMobileLayoutProps> = ({
       )}
 
       {currentScreen === 'history' && (
-        <HistoryScreen priceHistory={priceHistory} predictionHistory={predictionHistory} />
+        <HistoryPage priceHistory={priceHistory} predictionHistory={predictionHistory} />
       )}
 
       {currentScreen === 'settings' && <SettingsPage />}

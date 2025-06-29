@@ -8,9 +8,9 @@ import {
   ResultDisplay,
 } from '../game';
 import { Header } from './Header';
-import { type PriceHistoryPoint } from '../chart';
+import { type PriceHistoryPoint } from '@features/price-history';
 import type { BitcoinPriceData } from '../../../shared/models';
-import { HistoryScreen } from './screens/HistoryScreen';
+import { HistoryPage } from '@pages/HistoryPage';
 import { type ScreenType, useNavigationStore } from '../../stores';
 import { SettingsPage } from '@pages/SettingsPage';
 
@@ -129,7 +129,7 @@ export const AppDesktopLayout: React.FC<AppDesktopLayoutProps> = ({
 
       {/* History Tab */}
       {currentScreen === 'history' && (
-        <HistoryScreen priceHistory={priceHistory} predictionHistory={predictionHistory} />
+        <HistoryPage priceHistory={priceHistory} predictionHistory={predictionHistory} />
       )}
 
       {/* Settings Tab */}

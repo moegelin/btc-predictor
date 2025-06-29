@@ -4,7 +4,7 @@ import { AppMobileLayout, AppDesktopLayout } from './components/layout';
 import type { PredictionHistoryItem } from './components/game';
 import type { BitcoinPriceData, GuessResult } from '../shared/models';
 import { useBitcoinPriceWithCountdown } from './use-bitcoin';
-import type { PriceHistoryPoint } from './components/chart';
+import type { PriceHistoryPoint } from '@features/price-history';
 import { useSettingsStore } from '@features/settings';
 
 export type UserGuess = 'up' | 'down' | null; // TODO replace boolean

@@ -12,18 +12,15 @@ import {
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ChartTooltip } from './ChartTooltip';
 import { CustomDot } from './CustomDot';
-
-export type PriceHistoryPoint = {
-  timestamp: number;
-  price: number;
-  prediction?: 'up' | 'down' | null;
-  result?: boolean;
-};
+import type { PriceHistoryPoint } from '../models/types';
 
 type PriceHistoryChartProps = {
   data: PriceHistoryPoint[];
 };
 
+/**
+ * PriceHistoryChart component displays a line chart of Bitcoin price history
+ */
 export const PriceHistoryChart: React.FC<PriceHistoryChartProps> = React.memo(({ data }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -124,6 +121,3 @@ export const PriceHistoryChart: React.FC<PriceHistoryChartProps> = React.memo(({
     </Box>
   );
 });
-
-// Add a display name for debugging purposes
-PriceHistoryChart.displayName = 'PriceHistoryChart';
