@@ -1,14 +1,14 @@
-import type { BitcoinPriceData } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models/types';
 import { Box, Typography, useTheme } from '@mui/material';
 import { PriceDisplay } from '@app/components/game';
 import type { OnGuessFn } from '@app/App';
-import { WidgetContainer } from '@app/components/common';
 import {
   PredictionControls,
   PredictionDisplay,
   type PredictionResult,
   PredictionResultDisplay,
 } from '@features/prediction';
+import { WidgetContainer } from '@shared/ui/WidgetContainer';
 
 type HomeScreenProps = {
   price: BitcoinPriceData | null;

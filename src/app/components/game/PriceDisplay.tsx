@@ -6,8 +6,8 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import PauseIcon from '@mui/icons-material/Pause';
 import NumberFlow, { type Format } from '@number-flow/react';
 import './styles/price-display.css';
-import { WidgetContainer } from '../common';
 import { useSettingsStore } from '@features/settings';
+import { WidgetContainer } from '@shared/ui/WidgetContainer';
 
 const PriceChange = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isPositive',

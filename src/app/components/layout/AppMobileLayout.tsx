@@ -5,7 +5,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Header } from './Header';
 import type { PriceHistoryPoint } from '@features/price-history';
-import type { BitcoinPriceData } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models/types';
 import type { OnGuessFn } from '../../App';
 import { useNavigationStore, type ScreenType } from '../../stores';
 import { HistoryPage } from '@pages/history/HistoryPage';

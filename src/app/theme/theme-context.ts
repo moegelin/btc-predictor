@@ -22,7 +22,6 @@ declare module '@mui/material/styles' {
   }
 }
 
-// Define our themes
 export const themes = {
   light: createTheme({
     palette: {
@@ -92,14 +91,11 @@ export const themes = {
   }),
 };
 
-// Create a type for theme names
 export type ThemeName = keyof typeof themes;
 
-// Create the theme context
 export const ThemeContext = createContext({
   themeName: 'light' as ThemeName,
   setThemeName: (_name: ThemeName) => {},
 });
 
-// Hook to use the theme context
 export const useThemeContext = () => useContext(ThemeContext);

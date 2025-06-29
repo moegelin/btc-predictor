@@ -1,6 +1,6 @@
 import React from 'react';
-import { WidgetContainer } from '@app/components/common';
 import { SettingsContent } from '@features/settings';
+import { WidgetContainer } from '@shared/ui/WidgetContainer';
 
 export const SettingsPage: React.FC = () => {
   return (

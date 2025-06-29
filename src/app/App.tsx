@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Box, CircularProgress, Container, useMediaQuery, useTheme } from '@mui/material';
 import { AppMobileLayout, AppDesktopLayout } from './components/layout';
-import type { BitcoinPriceData } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models/types';
 import { useBitcoinPriceWithCountdown } from './use-bitcoin';
 import type { PriceHistoryPoint } from '@features/price-history';
 import { useSettingsStore } from '@features/settings';

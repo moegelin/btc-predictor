@@ -3,7 +3,7 @@ import { Button, Box, Typography, useTheme, useMediaQuery } from '@mui/material'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { styled } from '@mui/material/styles';
-import { WidgetContainer } from '@app/components/common';
+import { WidgetContainer } from '@shared/ui/WidgetContainer';
 
 const ControlsContainer = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'compact',

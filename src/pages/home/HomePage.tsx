@@ -1,7 +1,7 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import { HomePageMobile } from './HomePageMobile';
 import { HomePageDesktop } from './HomePageDesktop';
-import type { BitcoinPriceData } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models/types';
 import type { OnGuessFn } from '@app/App';
 import type { PredictionResult } from '@features/prediction';
 

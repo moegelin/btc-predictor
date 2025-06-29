@@ -1,4 +1,4 @@
-import type { BitcoinPriceData } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models/types';
 
 // Store the previous price value
 let previousBitcoinPrice: number | undefined = undefined;

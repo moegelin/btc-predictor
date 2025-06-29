@@ -6,9 +6,7 @@ import type { ThemeName } from './theme-context';
 
 // Enhanced theme provider that supports multiple named themes
 export const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [themeName, setThemeName] = useState<ThemeName>('dark'); // Default to dark theme
-
-  // Get the current theme object based on the theme name
+  const [themeName, setThemeName] = useState<ThemeName>('dark');
   const currentTheme = themes[themeName];
 
   return (

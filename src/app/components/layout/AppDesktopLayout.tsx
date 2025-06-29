@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, Box, Tab, Tabs } from '@mui/material';
 import { Header } from './Header';
 import { type PriceHistoryPoint } from '@features/price-history';
-import type { BitcoinPriceData } from '@shared/models';
+import type { BitcoinPriceData } from '@shared/models/types';
 import { HistoryPage } from '@pages/history/HistoryPage';
 import { type ScreenType, useNavigationStore } from '../../stores';
 import { SettingsPage } from '@pages/settings/SettingsPage';

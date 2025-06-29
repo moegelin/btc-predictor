@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { ApiService } from '../server/api.service';
-import type { BitcoinPriceData } from '../shared/models';
+import { ApiService } from '@server/api.service';
+import type { BitcoinPriceData } from '@shared/models/types';
 
 type BitcoinPriceWithCountdownProps = {
   intervalMs?: number; // Interval in milliseconds for fetching the price
