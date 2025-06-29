@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Chip, Paper, Typography, useMediaQuery, useTheme } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import '@app/components/game/styles/guess-status.css';
 
 type PredictionDisplayProps = {
   guessType: 'up' | 'down';

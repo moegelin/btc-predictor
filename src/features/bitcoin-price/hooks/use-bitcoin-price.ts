@@ -11,7 +11,7 @@ type BitcoinPriceWithCountdownProps = {
 /**
  * Custom hook to fetch Bitcoin price with a countdown timer.
  */
-export function useBitcoinPriceWithCountdown(props?: BitcoinPriceWithCountdownProps) {
+export function useBitcoinPrice(props?: BitcoinPriceWithCountdownProps) {
   const { intervalMs = 60000, onRefresh, isPaused = false } = props || {};
   const [price, setPrice] = useState<BitcoinPriceData | null>(null);
   const [progress, setProgress] = useState<number>(100);

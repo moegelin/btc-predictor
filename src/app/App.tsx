@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Box, CircularProgress, Container, useMediaQuery, useTheme } from '@mui/material';
-import { AppMobileLayout, AppDesktopLayout } from './components/layout';
+import { AppMobileLayout, AppDesktopLayout } from './layout';
 import type { BitcoinPriceData } from '@shared/models/types';
-import { useBitcoinPriceWithCountdown } from './use-bitcoin';
+import { useBitcoinPrice } from '@features/bitcoin-price';
 import type { PriceHistoryPoint } from '@features/price-history';
 import { useSettingsStore } from '@features/settings';
 import type { PredictionHistoryItem, PredictionResult } from '@features/prediction';
@@ -94,7 +94,7 @@ export const App: React.FC = () => {
     progress: progressValue,
     timeLeft: timeToNextUpdate,
     manualFetch,
-  } = useBitcoinPriceWithCountdown({
+  } = useBitcoinPrice({
     intervalMs: refreshTimerSeconds * 1000,
     onRefresh: onBitcoinRefresh,
     isPaused: isPriceRefreshPaused,

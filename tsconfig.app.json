@@ -30,7 +30,8 @@
       "@features/*": ["features/*"],
       "@pages/*": ["pages/*"],
       "@shared/*": ["shared/*"],
-      "@server/*": ["server/*"]
+      "@server/*": ["server/*"],
+      "@widgets/*": ["widgets/*"]
     }
   },
   "include": [

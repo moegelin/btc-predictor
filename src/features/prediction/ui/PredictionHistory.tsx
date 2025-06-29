@@ -5,23 +5,10 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import type { PredictionHistoryItem } from '../models/types';
+import { formatDate, formatPrice } from '@shared/utils';
 
 type PredictionHistoryProps = {
   history: PredictionHistoryItem[];
-};
-
-// TODO - Move this to a utility file
-const formatPrice = (price: number) => {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    signDisplay: 'always',
-  }).format(price);
-};
-
-// TODO - Move this to a utility file
-const formatDate = (timestamp: number) => {
-  return new Date(timestamp).toLocaleTimeString();
 };
 
 /**

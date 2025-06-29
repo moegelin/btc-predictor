@@ -1,11 +1,11 @@
 import { Box, Paper, useTheme } from '@mui/material';
-import { PriceDisplay } from '@app/components/game';
 import type { HomeScreenProps } from './HomePage';
 import {
   PredictionControls,
   PredictionDisplay,
   PredictionResultDisplay,
 } from '@features/prediction';
+import { PriceDisplay } from '@widgets/price-display';
 
 export const HomePageDesktop: React.FC<HomeScreenProps> = (props: HomeScreenProps) => {
   const { price, onGuess, disabled, userGuess, predictionResult } = props;

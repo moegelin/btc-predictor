@@ -3,6 +3,7 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import type { PredictionResult } from '../models/types';
+import { formatPrice } from '@shared/utils';
 
 type PredictionResultDisplayProps = {
   result: PredictionResult;
@@ -15,13 +16,6 @@ export const PredictionResultDisplay: React.FC<PredictionResultDisplayProps> = (
   const { correct, priceChange } = result;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
-  // Format price change with sign and 2 decimal places
-  const formattedPriceChange = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    signDisplay: 'always',
-  }).format(priceChange);
 
   return (
     <Box
@@ -59,7 +53,7 @@ export const PredictionResultDisplay: React.FC<PredictionResultDisplayProps> = (
       </Typography>
 
       <Typography variant={isMobile ? 'body2' : 'body1'} sx={{ mb: isMobile ? 0.5 : 1 }}>
-        The price changed by <strong>{formattedPriceChange}</strong>
+        The price changed by <strong>{formatPrice(priceChange)}</strong>
       </Typography>
 
       <Typography

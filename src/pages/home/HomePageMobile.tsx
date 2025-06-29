@@ -1,6 +1,6 @@
 import type { BitcoinPriceData } from '@shared/models/types';
 import { Box, Typography, useTheme } from '@mui/material';
-import { PriceDisplay } from '@app/components/game';
+import { PriceDisplay } from '@widgets/price-display';
 import type { OnGuessFn } from '@app/App';
 import {
   PredictionControls,

@@ -3,11 +3,11 @@ import { Alert, BottomNavigation, BottomNavigationAction, Paper, useTheme } from
 import HomeIcon from '@mui/icons-material/Home';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { Header } from './Header';
+import { Header } from '@widgets/header';
 import type { PriceHistoryPoint } from '@features/price-history';
 import type { BitcoinPriceData } from '@shared/models/types';
-import type { OnGuessFn } from '../../App';
-import { useNavigationStore, type ScreenType } from '../../stores';
+import type { OnGuessFn } from '../App';
+import { useNavigationStore, type ScreenType } from '../stores';
 import { HistoryPage } from '@pages/history/HistoryPage';
 import { SettingsPage } from '@pages/settings/SettingsPage';
 import { HomePage } from '@pages/home/HomePage';

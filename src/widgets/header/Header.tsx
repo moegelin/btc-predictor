@@ -12,8 +12,8 @@ import {
 import { styled } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import btcLogo from '../../../assets/btc-logo.svg';
-import { useThemeContext } from '../../theme/theme-context';
+import btcLogo from '../../assets/btc-logo.svg';
+import { useThemeContext } from '@app/theme/theme-context';
 import NumberFlow from '@number-flow/react';
 
 // Styled components

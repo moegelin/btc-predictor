@@ -5,9 +5,9 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import PauseIcon from '@mui/icons-material/Pause';
 import NumberFlow, { type Format } from '@number-flow/react';
-import './styles/price-display.css';
 import { useSettingsStore } from '@features/settings';
 import { WidgetContainer } from '@shared/ui/WidgetContainer';
+import './price-display.css';
 
 const PriceChange = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isPositive',
@@ -59,7 +59,7 @@ export const PriceDisplay: React.FC<PriceDisplayProps> = ({
           value={price}
           trend={0}
           locales={locale}
-          className={isMobile ? '' : 'live-price'}
+          className={isMobile ? '' : 'is-desktop-size'}
           format={priceFormat}
           willChange
           style={isMobile ? { fontSize: '1.8rem', fontWeight: 600 } : undefined}
