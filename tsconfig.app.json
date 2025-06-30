@@ -31,6 +31,7 @@
       "@pages/*": ["pages/*"],
       "@shared/*": ["shared/*"],
       "@server/*": ["server/*"],
+      "@test/*": ["test/*"],
       "@widgets/*": ["widgets/*"]
     }
   },

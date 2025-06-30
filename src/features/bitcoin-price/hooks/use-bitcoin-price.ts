@@ -35,7 +35,7 @@ export function useBitcoinPrice(props?: BitcoinPriceWithCountdownProps) {
   }, [intervalMs]);
 
   useEffect(() => {
-    void fetchPrice(); // initial load
+    void fetchPrice();
   }, [fetchPrice]);
 
   useEffect(() => {
@@ -60,7 +60,6 @@ export function useBitcoinPrice(props?: BitcoinPriceWithCountdownProps) {
     return () => clearInterval(interval);
   }, [nextUpdate, intervalMs, fetchPrice, onRefresh, isPaused]);
 
-  // Manual fetch function that can be called when paused
   const manualFetch = useCallback(async () => {
     return fetchPrice().then((priceData) => {
       onRefresh?.(priceData);
