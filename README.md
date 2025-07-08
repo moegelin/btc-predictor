@@ -103,10 +103,6 @@ npm run preview
 - **P**: Pause/Resume Bitcoin price updates
 - **M**: Manually refresh Bitcoin price (when paused)
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Author
 
 Josef Mögelin
